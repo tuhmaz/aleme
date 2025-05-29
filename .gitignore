@@ -1,0 +1,57 @@
+# Laravel specific
+/.phpunit.cache
+/node_modules
+/public/build
+/public/hot
+/public/storage
+/storage/*.key
+/vendor
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# IDE specific
+/.fleet
+/.idea
+/.vscode
+
+# Cache and logs
+*.log
+npm-debug.log
+yarn-error.log
+.phpunit.result.cache
+storage/logs/*
+storage/framework/cache/*
+storage/framework/sessions/*
+storage/framework/views/*
+
+# Development tools
+Homestead.json
+Homestead.yaml
+docker-compose.override.yml
+
+# Public directory exceptions
+!/public/assets
+!/public/assets/*
+/public/css
+/public/js
+
+# Composer specific
+composer.phar
+
+# Backup files
+*.bak
+*.swp
+*.swo
+
+# Local configuration
+config/local/*
+
+# Database
+*.sqlite
+*.sqlite3
+
+# Sensitive data
+/storage/app/private/*
