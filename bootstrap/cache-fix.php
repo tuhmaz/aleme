@@ -36,3 +36,16 @@ if (!isset($_ENV['SESSION_DRIVER'])) {
     $_ENV['SESSION_DRIVER'] = 'file';
     putenv('SESSION_DRIVER=file');
 }
+
+// تحقق من وجود .env وإنشاؤه إذا لزم الأمر
+if (!file_exists(__DIR__ . '/../.env') && file_exists(__DIR__ . '/../.env.example')) {
+    copy(__DIR__ . '/../.env.example', __DIR__ . '/../.env');
+}
+
+// تعيين APP_KEY افتراضي إذا لم يكن موجود
+if (!isset($_ENV['APP_KEY']) || empty($_ENV['APP_KEY'])) {
+    // إنشاء مفتاح مؤقت لتجنب الخطأ
+    $tempKey = 'base64:' . base64_encode(random_bytes(32));
+    $_ENV['APP_KEY'] = $tempKey;
+    putenv('APP_KEY=' . $tempKey);
+}

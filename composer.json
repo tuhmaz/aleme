@@ -66,6 +66,7 @@
   "scripts": {
     "post-autoload-dump": [
       "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+      "@php scripts/generate-key.php",
       "@php scripts/package-discover.php"
     ],
     "post-update-cmd": [

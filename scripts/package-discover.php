@@ -22,6 +22,19 @@ if (!file_exists(__DIR__ . '/../.env')) {
     }
 }
 
+// تحقق من وجود APP_KEY وإنشاؤه إذا لم يكن موجود
+$envContent = file_get_contents(__DIR__ . '/../.env');
+if (strpos($envContent, 'APP_KEY=') === false || preg_match('/APP_KEY=\s*$/', $envContent) || preg_match('/APP_KEY=""/', $envContent)) {
+    echo "Generating application key...\n";
+    $command = 'cd ' . escapeshellarg(__DIR__ . '/..') . ' && php artisan key:generate --force';
+    exec($command . ' 2>&1', $keyOutput, $keyExitCode);
+    if ($keyExitCode === 0) {
+        echo "Application key generated successfully.\n";
+    } else {
+        echo "Failed to generate application key, but continuing...\n";
+    }
+}
+
 // إنشاء المجلدات المطلوبة
 $directories = [
     __DIR__ . '/../storage/framework/cache',

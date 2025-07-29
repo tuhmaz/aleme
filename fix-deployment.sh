@@ -34,11 +34,9 @@ fi
 echo "📦 Installing dependencies..."
 composer install --no-dev --optimize-autoloader --no-interaction
 
-# Step 6: Generate app key if needed
+# Step 6: Generate app key
 echo "🔑 Generating application key..."
-if grep -q "APP_KEY=$" .env || grep -q "APP_KEY=\"\"" .env; then
-    php artisan key:generate --force
-fi
+php scripts/generate-key.php
 
 # Step 7: Clear Laravel cache (with error handling)
 echo "🧹 Clearing Laravel cache..."
