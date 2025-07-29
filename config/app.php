@@ -224,6 +224,11 @@ return [
 
   'providers' => [
     /*
+     * Early Boot Service Providers...
+     */
+    App\Providers\EarlyBootServiceProvider::class,
+
+    /*
      * Laravel Framework Service Providers...
      */
     Illuminate\Auth\AuthServiceProvider::class,

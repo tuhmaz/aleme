@@ -69,5 +69,20 @@ php artisan config:cache
 php artisan route:cache
 php artisan view:cache
 
+# Step 13: Test the fix
+echo "🔍 Testing the deployment..."
+if php artisan list > /dev/null 2>&1; then
+    echo "✅ Laravel is working correctly!"
+else
+    echo "⚠️ Laravel may have issues, check logs"
+fi
+
+echo ""
 echo "✅ Deployment fix completed!"
-echo "🌐 Your application should now work correctly!"
+echo "🌐 Your Aleme Educational System should now work correctly!"
+echo "📝 If you still have issues, check storage/logs/laravel.log"
+echo "🔧 The following fixes were applied:"
+echo "   - Cache directories created"
+echo "   - Custom package discovery script"
+echo "   - Early boot service provider"
+echo "   - Bootstrap cache fix"
